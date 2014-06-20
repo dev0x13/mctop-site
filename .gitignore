@@ -3,12 +3,12 @@
 ## App
 #####
 =======
-№index.php
+#index.php
 static/img/u/*
 static/img/u*
 static/uploaded
 mctop-site
-site
+#site
 protected/runtime/*
 —
 61681a30d47dc8b1ec5180cc
