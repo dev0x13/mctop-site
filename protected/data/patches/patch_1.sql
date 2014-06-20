@@ -1,0 +1,2 @@
+ALTER TABLE `users` ADD `show_all_projects` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' ;
+ALTER TABLE `projects` ADD `banner_clickable` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' ;

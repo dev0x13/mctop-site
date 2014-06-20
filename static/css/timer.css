@@ -1,0 +1,183 @@
+html {
+    padding: 9px;
+    padding-left: 110px;
+}
+
+body {
+    background-color: #fff;
+    color: #000;
+    margin-right: 100px;
+    border-radius: 37px;
+    text-shadow: 0 0 9px #000;
+}
+
+h1 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    text-align: center;
+    padding: 30px;
+    border-radius: 5px;
+    margin-left: 196px;
+    margin-right: 196px;
+    font-weight: normal;
+}
+
+.message {
+
+}
+
+h4 {
+    color: #b6b6b6;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: normal;
+}
+
+.clock {
+    width: 624px;
+    margin-top: 50px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.clock_days {
+    float: left;
+    margin-right: 30px;
+    display: none;
+}
+
+.clock_hours {
+    float: left;
+    margin-right: 30px;
+    color: #ff0f09;
+}
+
+.clock_minutes {
+    float: left;
+    margin-right: 30px;
+}
+
+.clock_seconds {
+    float: left;
+}
+
+.bgLayer {
+    position: relative;
+}
+
+.topLayer {
+    position: absolute;
+    width: 188px;
+    height: 188px;
+    background-repeat: no-repeat;
+}
+
+.text {
+    position: absolute;
+    top: 45px;
+    left: 42px;
+    width: 100px;
+    height: 100px;
+}
+
+.val {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 47px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 15px;
+    width: 100px;
+}
+
+.type_days {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    width: 100px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.type_hours {
+
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #ff0f09;
+    width: 100px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #FF0000;
+}
+
+.type_hours .val {
+    color: #ff0f09;
+    text-shadow: 0 0 10px #FF0000;
+}
+
+.type_minutes {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #ffd552;
+    width: 100px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #ffd552;
+}
+
+.type_minutes .val {
+    color: #ffd552;
+
+}
+
+.type_seconds {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #52ff3d;
+    width: 100px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #52ff3d;
+}
+
+.type_seconds .val {
+    color: #52ff3d;
+}
+
+.divider {
+    width: 960px;
+    height: 71px;
+    background-image: url(../img/diviers.png);
+    float: left;
+    margin-top: 50px;
+}
+
+.divider p {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #b6b6b6;
+    line-height: 70px;
+    text-align: center;
+}
+
+.divider a {
+    color: #39F;
+    text-decoration: none;
+}
+
+.divider a:hover {
+    color: #FFF;
+}

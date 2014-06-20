@@ -1,0 +1,1 @@
+<div class="mod"><a href="/mdb/mod/<?php echo $mod->id; ?>"><?php echo CHtml::encode($mod['title']) ?></a></div>

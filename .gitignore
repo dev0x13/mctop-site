@@ -1,0 +1,31 @@
+
+#####
+## App
+#####
+=======
+index.php
+static/img/u/*
+static/img/u*
+static/uploaded
+mctop-site
+site
+protected/runtime/*
+—
+61681a30d47dc8b1ec5180cc
+dump.rdb
+.DS_Store
+Thumbs.db
+test.bat
+
+#####
+## Yii
+#####
+assets
+protected/runtime/*
+protected/runtime/*/*
+
+#####
+## PhpStorm
+#####
+.idea
+
