@@ -2,7 +2,7 @@
 
 <?php
 $this->breadcrumbs = array(
-    Yii::t('translations', 'Мдб Вики') => array('/wiki'),
+    Yii::t('translations', 'MDB Wiki') => array('/wiki'),
     Yii::t('translations', 'Поиск по команде')
 );
 ?>

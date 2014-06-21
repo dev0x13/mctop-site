@@ -4,7 +4,7 @@
 
 $title = $id == Mdb::TYPE_PLUGIN ? Yii::t('translations', 'Плагины') : Yii::t('translations', 'Моды');
 $this->breadcrumbs = array(
-    Yii::t('translations', 'Мдб Вики') => array('/wiki'),
+    Yii::t('translations', 'MDB Wiki') => array('/wiki'),
     Yii::t('translations', $title)
 );
 

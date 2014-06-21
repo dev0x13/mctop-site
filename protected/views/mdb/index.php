@@ -2,16 +2,16 @@
 
 <?php
 $this->breadcrumbs = array(
-    Yii::t('translations', 'Мдб Вики') => array('/wiki'),
+    Yii::t('translations', 'MDB Wiki') => array('/wiki'),
 );
 ?>
 
-<div class="pageTitle"><?php echo Yii::t('translations', 'Мдб Вики'); ?></div>
+<div class="pageTitle"><?php echo Yii::t('translations', 'MDB Wiki'); ?></div>
 
 <div class="mdb">
 
     <div class="about">
-        <?php echo Yii::t('translations', 'Мдб Вики - база данных, в которой вы можете найти различную информацию о модах и плагинах, установленных на серверах'); ?>
+        <?php echo Yii::t('translations', 'MDB Wiki - база данных, в которой вы можете найти различную информацию о модах и плагинах, установленных на серверах'); ?>
     </div>
 
     <hr>

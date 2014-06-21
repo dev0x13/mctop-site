@@ -9,7 +9,7 @@ if (!is_null($english_plugin) && Yii::app()->language == 'en') {
 }
 
 $this->breadcrumbs = array(
-    Yii::t('translations', 'Мдб Вики') => array('/wiki'),
+    Yii::t('translations', 'MDB Wiki') => array('/wiki'),
     Yii::t('translations', 'Плагины') => array('/wiki/plugins/list'),
     $plugin->name
 );
