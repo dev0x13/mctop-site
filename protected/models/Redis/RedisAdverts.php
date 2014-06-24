@@ -110,7 +110,8 @@ class RedisAdverts extends _RedisHashAR
 
     public function subtract_balance_on_view($id, $pay_type, $position)
     {
-
+        //$count = 0;
+        //$balance = 0;
         switch ($pay_type) {
             case Adverts::PAY_TYPE_VIEWS:
                 $position == Adverts::POSITION_HEAD ? $count = $this->balance / 25 * 1000 : $count = $this->balance / 15 * 1000;
