@@ -1,7 +1,7 @@
 <?php
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'MCTop.im - Minecraft content',
+    'name' => 'MCTop.im - Minecraft International Portal',
     'language' => 'ru',
     'defaultController' => 'Rating',
 

@@ -433,4 +433,9 @@ class SiteController extends Controller
     {
         $this->render('sponsors');
     }
+
+    public function actionfest_in_jule()
+    {
+        $this->render('fest_in_jule');
+    }
 }

@@ -183,9 +183,9 @@ return array(
      * MDB
      */
     'Модификация' => 'Modification',
-    'Мдб Вики' => 'Mdb Wiki',
-    'Мдб Вики - база данных, в которой вы можете найти различную информацию о модах и плагинах, установленных на серверах' =>
-        'Mdb Wiki is a database of the MCTop, there you can find different information about mods and plugins installed on servers',
+    'MDB Wiki' => 'MDB Wiki',
+    'MDB Wiki - база данных, в которой вы можете найти различную информацию о модах и плагинах, установленных на серверах' =>
+        'MDB Wiki is a database of the MCTop, there you can find different information about mods and plugins installed on servers',
     'Команды' => 'Commands',
     'Поиск по названию' => 'Search by name',
     'Поиск по команде' => 'Search by command',

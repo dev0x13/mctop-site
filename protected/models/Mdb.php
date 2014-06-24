@@ -117,8 +117,7 @@ class Mdb extends CActiveRecord
         if (Yii::app()->language == 'en')
             $this->description = $this->english_record->description;
 
-        if (!empty(json_decode($this->description)->description))
-            return json_decode($this->description)->description;
+        return $this->description;
     }
 
 
@@ -136,8 +135,7 @@ class Mdb extends CActiveRecord
         if (Yii::app()->language == 'en')
             $this->description = $this->english_record->description;
 
-        if (!empty(json_decode($this->description)->installation))
-            return json_decode($this->description)->installation;
+        return $this->description;
     }
 
     public function getLast_version()

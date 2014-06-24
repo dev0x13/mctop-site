@@ -9,9 +9,9 @@
 				
 			try {  
 				$CONF['host'] = 'localhost';
-				$CONF['database'] = 'mctopv2';
-				$CONF['username'] = 'mctop_user';
-				$CONF['password'] = '9J4P:Es72Y';
+				$CONF['database'] = 'mctop_old';
+				$CONF['username'] = 'mctop_importer';
+				$CONF['password'] = 'EV3><o^haJ';
 				$CONF['prefix'] = 'rtt';
 				$this->connection = new PDO('mysql:host='.$CONF['host'].';dbname='.$CONF['database'].'', $CONF['username'], $CONF['password']);
 				$this->connection->query("SET NAMES utf8");  				

@@ -37,13 +37,14 @@
             <?php $this->widget('zii.widgets.CMenu', array(
                 'items' => array(
                     array('label' => Yii::t('translations', 'Новости'), 'url' => array('/news')),
+                    array('label' => Yii::t('translations', 'Очень важная информация'), 'url' => array('/s/fest_in_jule')),
                     array('label' => Yii::t('translations', 'Рейтинг'), 'url' => array('/rating')),
                     //array('label' => Yii::t('translations', 'Рекомендуемые'), 'url' => array('/rating/recommended')),
                     /*array('label' => Yii::t('translations', 'Мой профиль'), 'url' => array('/u'.Yii::app()->user->id), 'visible' => !Yii::app()->user->isGuest),*/
                     array('label' => Yii::t('translations', 'Мой профиль'), 'url' => array('/users/profile/'.Yii::app()->user->id), 'visible' => !Yii::app()->user->isGuest),
                     array('label' => Yii::t('translations', 'Личный кабинет'), 'url' => array('/cabinet'), 'visible' => !Yii::app()->user->isGuest),
                     array('label' => Yii::t('translations', 'Поиск'), 'url' => array('/search')),
-                    //array('label' => Yii::t('translations', 'Мдб Вики'), 'url' => array('/mdb')),
+                    array('label' => Yii::t('translations', 'MDB Wiki'), 'url' => array('/mdb')),
                     array('label' => Yii::t('translations', 'Вход'), 'url' => array('/s/login'), 'visible' => Yii::app()->user->isGuest, 'itemOptions' => array('class' => 'login')),
                     array('label' => Yii::t('translations', 'Office'), 'url' => Yii::app()->params['admin_site_url'] . 'site/login', 'visible' => !Yii::app()->user->isGuest & AdminSiteRights::model()->exists('user=:user', array(':user' => Yii::app()->user->id))),
                     array('label' => Yii::t('translations', 'Выход'), 'url' => array('/s/logout'), 'visible' => !Yii::app()->user->isGuest, 'itemOptions' => array('class' => 'logout')),
