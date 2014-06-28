@@ -59,14 +59,14 @@ class Users extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('login, email, registered, name, surname, gender, birthday, last_update', 'required'),
+            array('email, registered, name, surname, gender, birthday, last_update', 'required'),
             array('gender, show_all_projects', 'numerical', 'integerOnly' => true),
             array('login, name, surname', 'length', 'max' => 64),
             array('email, pwd', 'length', 'max' => 128),
             array('email, login', 'unique'),
             array('email', 'email'),
             array('email', 'filter', 'filter' => 'mb_strtolower'),
-            array('login', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u'),
+            //todo тут был охуенный паттерн, снял его 28/06/14
             // The following rule is used by search().
             array('id, login, email, pwd, registered, name, surname, gender, birthday, last_update, show_all_projects', 'safe', 'on' => 'search'),
         );
@@ -168,7 +168,6 @@ class Users extends CActiveRecord
                 $this->registered = date('Y-m-d', time());
                 $this->pwd = crypt($this->pwd);
             }
-            $this->last_update = HUtils::getCurrentTimestamp();
 
         } else {
             if (isset($_POST['pwd']))

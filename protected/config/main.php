@@ -39,7 +39,7 @@ return array(
             'showScriptName' => false,
             'caseSensitive' => true,
             'rules' => array(
-                'u<id:\d>'=>'users/profile',
+                'u<id:\d+>'=>'users/profile',
                 'auth_admin'=>'site/auth_admin',     
                 's/<action:\w+>' => 'site/<action>',
                 's/restorepassword/<hash:\w+>' => 'site/restorepassword',

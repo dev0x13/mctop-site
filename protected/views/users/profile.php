@@ -15,6 +15,12 @@ $this->pageTitle .= ' - ' . CHtml::encode($user->name) . ' ' . CHtml::encode($us
         <div class="avatar">
             <img src="<?php echo $user->avatar; ?>"/>
         </div>
+        <div class="buttons">
+            <?php
+                if(Yii::app()->user->id == $_GET['id'])
+                    echo '<a class="btn" href="/users/settings">'.Yii::t('translations','Обновить').'</a>';
+            ?>
+        </div>
     </div>
 
     <div class="right-side">
@@ -27,6 +33,8 @@ $this->pageTitle .= ' - ' . CHtml::encode($user->name) . ' ' . CHtml::encode($us
                 ;?>
         </div>
     </div>
+
+
 
     <?php
     /*

@@ -26,14 +26,16 @@ $this->breadcrumbs = array(
     <?php echo $form->errorSummary($model); ?>
     <?php $this->widget('ext.hoauth.widgets.HOAuth'); ?>
     <hr>
-    <?php if ($model->can_change_login == 1): ?>
-        <div class="form-group">
-            <?php echo $form->labelEx($model, 'login'); ?>
-            <?php echo $form->textField($model, 'login', array('class' => 'form-control', 'style' => 'border: 2px solid #FF0000;')); ?>
-            <?php //echo $form->error($model, 'login'); ?>
-        </div>
-        <?php echo Yii::t('translations', 'Поменяйте свой логин.'); ?>
-    <?php endif; ?>
+    <div class="form-group">
+        <?php echo $form->labelEx($model, 'login'); ?>
+        <?php echo $form->textField($model, 'login', array('class' => 'form-control')); ?>
+    </div>
+
+    <div class="form-group">
+        <?php echo $form->labelEx($model, 'email'); ?>
+        <?php echo $form->textField($model, 'email', array('class' => 'form-control')); ?>
+        <?php echo $form->error($model, 'email'); ?>
+    </div>
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'name'); ?>

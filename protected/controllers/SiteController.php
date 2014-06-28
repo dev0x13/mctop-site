@@ -66,169 +66,6 @@ class SiteController extends Controller
         }
     }
 
-    public function actionImport()
-    {
-        $project = new Projects();
-        $servers = [];
-        $image = new Images();
-        if(Yii::app()->request->isAjaxRequest)
-        {
-            $server = new Servers();
-            $server->attributes = $_POST['Servers'];
-            $server->license = $_POST['license'];
-            if(!empty($server->type))
-                $server->type = $_POST['type'];
-            else
-                $server->type = ':1:';
-            $server->own_client = $_POST['own_client'];
-            $server->project = Yii::app()->session['mctop_register_project_id'];
-
-            if($server->save())
-                echo 'success';
-            else
-                var_dump($server->getErrors());
-            Yii::app()->end();
-        }
-
-        if (Yii::app()->request->isPostRequest) {
-            if (isset($_POST['password']))
-                Yii::app()->session['mctop_register_password'] = $_POST['password'];
-            if (isset($_POST['username']))
-                Yii::app()->session['mctop_register_username'] = $_POST['username'];
-
-
-            $ch = curl_init();
-            $url = "http://mctop.im/leo/?a=api&module=project&action=registerWithPassword&password=" . Yii::app()->session['mctop_register_password'] . "&username=" . Yii::app()->session['mctop_register_username'] . "";
-
-
-            $result = HUtils::sendAjaxGetRequestWithoutParamsArray($url);
-
-            $data = json_decode($result);
-
-            if (is_null($data)) {
-                $this->render('profile_not_found');
-                Yii::app()->end();
-            }
-
-            if ($data->user->pwd == md5(Yii::app()->session['mctop_register_password'])) {
-                unset($data->user->id);
-                unset($data->project->id);
-                $user = new Users();
-                foreach ($data->user as $key => $value)
-                    $user->$key = $value;
-
-                if (isset($_POST['stage'])) {
-                    if ($_POST['stage'] == 'first') {
-                        $this->render('continue_import', array(
-                            'model' => $user
-                        ));
-                        die();
-                    }
-                    if ($_POST['stage'] == 'userRegister') {
-
-                        if (isset($_POST['Users'])) {
-                            $user->attributes = $_POST['Users'];
-                            $user->pwd = crypt($_POST['password']);
-                            $user->language = $_POST['Users']['language'];
-                            $user->login = $_POST['login'];
-                            $user->can_change_login = false;
-                            Yii::app()->session['provider'] = 'mctop';
-                            if ($user->save()) {
-                                Yii::app()->session['mctop_register_user_id'] = $user->id;
-
-                                foreach ($data->project as $key => $value) {
-                                    if ($key != 'url')
-                                        $project->$key = $value;
-                                    else
-                                        $project->site = $value;
-                                }
-
-                                $this->render('project_info', array(
-                                    'servers' => $servers,
-                                    'project' => $project
-                                ));
-                            } else
-                                $this->render('continue_import', array(
-                                    'model' => $user
-                                ));
-                            die();
-                        } else {
-                            $this->render('continue_import', array(
-                                'model' => $user
-                            ));
-                            die();
-                        }
-
-
-                    }
-                }
-
-
-                $test = CUploadedFile::getInstance($project, 'banner_image');
-                if (!empty($test)) {
-                    $image->image = CUploadedFile::getInstance($project, 'banner_image');
-                    $project->attributes = $_POST['Projects'];
-                    $project->banner_image = $image;
-
-                    foreach ($data->servers as $key => $_server) {
-                        $server = new Servers();
-                        foreach ($_server as $_key => $value)
-                            $server->$_key = $value;
-
-                        switch ($server->type) {
-                            case 1:
-                                $server->type = 2;
-                                break;
-                            case 2:
-                                $server->type = 6;
-                                break;
-                            case 3:
-                                $server->type = 1;
-                        }
-
-                        $server->type = ':' . $server->type . ':';
-                        $project->servers_count++;
-                        $servers[] = $server;
-                    }
-
-                    $project->register_date = $data->user->registered;
-                    if ($project->save()) {
-                        Yii::app()->session['mctop_register_stage'] = 'finally';
-                        Yii::app()->session['mctop_register_project_id'] = $project->id;
-
-                        $this->render('servers', array(
-                            'servers' => $servers,
-                            'project' => $project
-                        ));
-                        die();
-                    } else {
-                        $this->render('project_info', array(
-                            'servers' => $servers,
-                            'project' => $project
-                        ));
-                        die();
-                    }
-
-                }
-
-                if ($_POST['Projects']['register_stage'])
-                    if ($_POST['Projects']['register_stage'] == 'finally')
-                        $this->redirect('/s/login');
-
-                Yii::app()->end();
-            }
-
-
-            die();
-            curl_close($ch);
-        }
-        $this->render('import');
-    }
-
-    public function actionImportUpdateSettings()
-    {
-
-    }
 
     public function actionError()
     {
@@ -243,35 +80,41 @@ class SiteController extends Controller
     public function actionLogin()
     {
 
+        if (Yii::app()->request->urlReferrer != Yii::app()->params['site_url'] . 's/login')
+            Yii::app()->request->cookies['previous_url'] = new CHttpCookie('previous_url', Yii::app()->request->urlReferrer);
+
         if (Yii::app()->user->isGuest) {
 
             $model = new LoginForm;
 
-            if (isset($_POST['LoginForm'])) {
+            if (!isset($_POST['LoginForm'])) 
+                $this->render('login', array('model' => $model));
+
+            else
+            {   
+
                 $model->attributes = $_POST['LoginForm'];
 
-                if ($model->validate() && $model->login()) {
+                if ($model->validate() && $model->login()) 
+                {
 
-                    if ((empty(Yii::app()->session['last_update'])) or (time() - strtotime(Yii::app()->session['last_update']) > 120)) {
-					
-                        Yii::app()->session['last_update'] = date('Y-m-d H:i:s', time());
-                        if (!empty(Yii::app()->session['last_update'])) {
-                            $user = Users::model()->findByPk(Yii::app()->user->id);
-                            $user->last_update = Yii::app()->session['last_update'];
-                            $user->save();
-                        }
-
-							/*if (Yii::app()->request->urlReferrer != Yii::app()->params['site_url'] . 's/login')
-							Yii::app()->request->cookies['previous_url'] = new CHttpCookie('previous_url', Yii::app()->request->urlReferrer);*/
-						
-                    }
+                    if(Yii::app()->request->cookies['previous_url'] != Yii::app()->params['site_url'] . 's/login')
+                        $this->redirect(Yii::app()->request->cookies['previous_url']);
+                    else
+                        $this->redirect('/rating');
 
                 }
 
             }
 
-            $this->render('login', array('model' => $model));
-        } else {
+
+        } 
+
+        else 
+        {
+            //if (Yii::app()->request->urlReferrer != Yii::app()->params['site_url'] . 's/login')
+            //    Yii::app()->request->cookies['previous_url'] = new CHttpCookie('previous_url', Yii::app()->request->urlReferrer);
+            //else
                 $this->redirect('/rating');
         }
 
