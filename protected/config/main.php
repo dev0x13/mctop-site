@@ -95,18 +95,9 @@ return array(
         'db' => array(
             'emulatePrepare' => true,
             'charset' => 'utf8',
-            'connectionString' => 'mysql:host=127.0.0.1;dbname=admin_top',
-            'username' => 'mctop_user',
-            'password' => '9J4P:Es72Y',
-            'enableProfiling' => true,
-        ),
-
-        'mctopv2' => array(
-            'emulatePrepare' => true,
-            'charset' => 'utf8',
-            'connectionString' => 'mysql:host=127.0.0.1;dbname=admin_top',
-            'username' => 'mctop_user',
-            'password' => '9J4P:Es72Y',
+            'connectionString' => 'mysql:host=127.0.0.1;dbname=top',
+            'username' => 'root',
+            'password' => '4XUfgHt3',
             'enableProfiling' => true,
         ),
 

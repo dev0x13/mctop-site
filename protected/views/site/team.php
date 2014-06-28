@@ -9,12 +9,15 @@ $this->pageTitle .= ' - ' . Yii::t('translations', 'Kоманда');
 <div class="pageTitle">MCTop Team</div>
 
 <div class="form">
+
+    <hr>
     <h3>
         <?php echo Yii::t('translations', 'Основатели сайта') ?>
     </h3>
     <hr>
     <b>Ilya Vorozhbit</b><br>
     <b>Vladimir Cholokyan</b><br>
+
     <hr>
     <h3>
         <?php echo Yii::t('translations', 'Программисты') ?>
