@@ -22,7 +22,7 @@ $this->breadcrumbs = array(
     </div>
 
     <div class="row">
-        <?php echo $form->textField($message, 'message', array('id' => 'title', 'size' => 60, 'maxlength' => 64, 'placeholder' => '* ' . Yii::t('translations', 'Сообщение'))); ?>
+        <?php echo $form->textField($message, 'message', array('id' => 'title', 'size' => 60, 'maxlength' => 255, 'placeholder' => '* ' . Yii::t('translations', 'Сообщение'))); ?>
         <?php echo $form->error($message, 'message'); ?>
     </div>
 
