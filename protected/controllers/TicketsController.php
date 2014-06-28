@@ -69,33 +69,38 @@ class TicketsController extends Controller
         $ticket = TicketsTopics::model()->findByPk($id);
         $model = new TicketsMessages();
 
-        if (is_null($ticket))
-            throw new CHttpException(404, Yii::t('translations', 'entity не найден', array('entity' => Yii::t('translations', 'Тикет'))));
+        if ($ticket->user != Yii::app()->user->id)
+          $this->redirect('/tickets');
+        else
+        {
+          if (is_null($ticket))
+              throw new CHttpException(404, Yii::t('translations', 'entity не найден', array('entity' => Yii::t('translations', 'Тикет'))));
 
-        if (isset($_POST['close'])) {
-            $ticket->status = TicketsTopics::STATUS_CLOSED;
-            $ticket->save();
-            $this->redirect('/tickets');
+          if (isset($_POST['close'])) {
+              $ticket->status = TicketsTopics::STATUS_CLOSED;
+              $ticket->save();
+              $this->redirect('/tickets');
+          }
+
+          if (isset($_POST['TicketsMessages'])) {
+              $model->attributes = $_POST['TicketsMessages'];
+              $model->author = Yii::app()->user->id;
+              $model->ticket = $id;
+              $model->time = HUtils::getCurrentTimestamp();
+              $ticket->status = TicketsTopics::STATUS_USER_ANSWERED;
+              if ($model->save())
+                  if ($ticket->save())
+                      $this->redirect('/tickets/show/' . $id);
+          }
+
+          $ticket_info = TicketsTopics::getTicketInfo($ticket->id);
+          $this->render('conversation', array(
+              'messages' => $ticket_info['messages'],
+              'pages' => $ticket_info['pages'],
+              'ticket' => $ticket,
+              'model' => $model,
+              'user' => Users::model()->findByPk(Yii::app()->user->id)
+          ));
         }
-
-        if (isset($_POST['TicketsMessages'])) {
-            $model->attributes = $_POST['TicketsMessages'];
-            $model->author = Yii::app()->user->id;
-            $model->ticket = $id;
-            $model->time = HUtils::getCurrentTimestamp();
-            $ticket->status = TicketsTopics::STATUS_USER_ANSWERED;
-            if ($model->save())
-                if ($ticket->save())
-                    $this->redirect('/tickets/show/' . $id);
-        }
-
-        $ticket_info = TicketsTopics::getTicketInfo($ticket->id);
-        $this->render('conversation', array(
-            'messages' => $ticket_info['messages'],
-            'pages' => $ticket_info['pages'],
-            'ticket' => $ticket,
-            'model' => $model,
-            'user' => Users::model()->findByPk(Yii::app()->user->id)
-        ));
     }
 }
