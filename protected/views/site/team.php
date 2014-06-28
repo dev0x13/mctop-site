@@ -26,15 +26,18 @@ $this->pageTitle .= ' - ' . Yii::t('translations', 'Kоманда');
     <h3>
         <?php echo Yii::t('translations', 'Программисты') ?>
     </h3>
+    <br>
     <b>George Manuilov<br>
 		<div style="font-size:9px">
 			porto@mctop.im
 		</div>
+        <br>
 
     <b>Роман Зайруллин<br>
         <div style="font-size:9px">
             krosenmann@mctop.im
         </div>
+        <br>
 
     <b>Максим Сешук<br>
 		<div style="font-size:9px">
