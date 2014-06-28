@@ -33,20 +33,17 @@ class Controller extends CController
 
         if (!Yii::app()->user->isGuest) {
 
-            if ((empty(Yii::app()->session['last_update'])) or (time() - strtotime(Yii::app()->session['last_update']) > 60 * 10)) {
                 $last_update = date('Y-m-d H:i:s', time());
                 Yii::app()->session['last_update'] = $last_update;
-                if (!empty($last_update)) {
-                    $user = Users::model()->findByPk(Yii::app()->user->id);
-                    $user->last_update = new CDbExpression('NOW()');
-                    $user->save();
-                }
-            }
+
+				$user = Users::model()->findByPk(Yii::app()->user->id);
+				$user->last_update = new CDbExpression('NOW()');
+				$user->save();
+                           
         } else {
-            //$user_country = Yii::app()->SxGeo->getCountry($_SERVER['REMOTE_ADDR']);
-            //if ($user_country != 'RU' and $user_country != 'UA' and $user_country != 'BY')
-                //Yii::app()->language = 'en';
-                Yii::app()->language = 'ru';
+            $user_country = Yii::app()->SxGeo->getCountry($_SERVER['REMOTE_ADDR']);
+            if ($user_country != 'ru' and $user_country != 'ua' and $user_country != 'by')
+                Yii::app()->language = 'en';
         }
 
         if (isset(Yii::app()->session['lang'])) {

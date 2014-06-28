@@ -31,6 +31,8 @@
                                 content += '<b><?php echo Yii::t('translations','Моды')?></b>: ' + data.mods + '<br>';
                             if (data.online)
                                 content += '<b><?php echo Yii::t('translations','Игроки')?></b>: ' + data.online +'/'+ data.slots + '<br>';
+                            if (data.online)
+                                content += '<b><?php echo Yii::t('translations','Онлайн')?></b>: ' + data.online + '<br>';
                             if (data.avg_online)
                                 content += '<b><?php echo Yii::t('translations','Средний онлайн')?></b>: ' + data.avg_online + '<br>';
 

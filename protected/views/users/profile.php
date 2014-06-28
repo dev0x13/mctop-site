@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle .= ' - ' . $user->name . ' ' . $user->surname;
+$this->pageTitle .= ' - ' . CHtml::encode($user->name) . ' ' . CHtml::encode($user->surname);
 ?>
 
 <div class="user_page">
@@ -8,7 +8,7 @@ $this->pageTitle .= ' - ' . $user->name . ' ' . $user->surname;
         <img
             src="/static/img/flags/<?php echo $user->language; ?>.png"/>
 
-        <?php echo $user->name; ?> <?php echo $user->surname; ?>
+        <?php echo CHtml::encode($user->name); ?> <?php echo CHtml::encode($user->surname); ?>
     </div>
 
     <div class="left-side">

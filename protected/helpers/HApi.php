@@ -55,7 +55,7 @@ class HApi
             $array_to_return['online'] = $server->online;
             $array_to_return['slots'] = $server->slots;
             $array_to_return['average_online_month'] = round($server->average_online_month,0);
-            $array_to_return['uptime'] = round(($server->queries_count_success/$server->queries_count),2);
+            $array_to_return['uptime'] = 100*round(($server->queries_count_success/$server->queries_count),4);
 
             echo HUtils::json_encode_cyr($array_to_return);
         } else

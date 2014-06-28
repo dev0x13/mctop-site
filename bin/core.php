@@ -11,13 +11,13 @@ class PNix
     {
         require_once('Time.php');
 
+
         if(isset($_SERVER['HTTP_X_REAL_IP']))
             if($_SERVER['HTTP_X_REAL_IP']=='93.92.202.81')
             {
                 defined('YII_DEBUG') or define('YII_DEBUG', true);
                 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
             }
-
 
         $yii = root . '/framework/yii.php';
         $config = root . '/protected/config/main.php';

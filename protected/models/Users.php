@@ -64,6 +64,9 @@ class Users extends CActiveRecord
             array('login, name, surname', 'length', 'max' => 64),
             array('email, pwd', 'length', 'max' => 128),
             array('email, login', 'unique'),
+            array('email', 'email'),
+            array('email', 'filter', 'filter' => 'mb_strtolower'),
+            array('login', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u'),
             // The following rule is used by search().
             array('id, login, email, pwd, registered, name, surname, gender, birthday, last_update, show_all_projects', 'safe', 'on' => 'search'),
         );

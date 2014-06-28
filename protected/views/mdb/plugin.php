@@ -30,9 +30,6 @@ $this->breadcrumbs = array(
                 <a href="#description"><?php echo Yii::t('translations', 'Описание') ?></a>
             </li>
             <li>
-                <a href="#installation"><?php echo Yii::t('translations', 'Установка') ?></a>
-            </li>
-            <li>
                 <a href="#commands"><?php echo Yii::t('translations', 'Команды') ?></a>
             </li>
         </ul>
@@ -55,11 +52,6 @@ $this->breadcrumbs = array(
         <div id="description" class="description">
             <h1><?php echo Yii::t('translations', 'Описание') ?></h1>
             <?php echo nl2br(CHtml::encode($plugin->getDescription())); ?>
-        </div>
-
-        <div id="installation" class="setup">
-            <h1><?php echo Yii::t('translations', 'Установка') ?></h1>
-            <?php echo nl2br(CHtml::encode($plugin->getHowtoInstall())); ?>
         </div>
 
         <h1><?php echo Yii::t('translations', 'Команды'); ?></h1>
