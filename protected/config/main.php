@@ -1,11 +1,11 @@
 <?php
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'MCTop.im - Minecraft International Portal',
+    'name' => 'MCTop.im - Minecraft International Portal!',
     'language' => 'ru',
     'defaultController' => 'Rating',
 
-    'preload' => array('log'),
+    'preload' => array('log', 'debug'),
 
     'import' => array(
         'application.models.*',
@@ -34,17 +34,22 @@ return array(
             'allowAutoLogin' => true,
         ),
 
+        'debug' => array(
+            'class' => 'ext.yii2-debug.Yii2Debug'
+        ),
+
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'caseSensitive' => true,
             'rules' => array(
-                'u<id:\d>'=>'users/profile',
+
 
                 's/<action:\w+>' => 'site/<action>',
                 's/restorepassword/<hash:\w+>' => 'site/restorepassword',
 
                 'wiki' => 'mdb',
+				'u<id:\d+>'=>'users/profile',
                 'wiki/<action:\w+>' => 'mdb/<action>',
                 'wiki/mods/list' => 'mdb/type/mods',
                 'wiki/mods/<id:\d+>' => 'mdb/mod',
@@ -196,15 +201,6 @@ return array(
 
         'errorHandler' => array(
             'errorAction' => 'site/error',
-        ),
-        'log' => array(
-            'class' => 'CLogRouter',
-            'routes' => array(
-                array(
-                    'class' => 'ext.yii-debug-toolbar.YiiDebugToolbarRoute',
-                    'ipFilters' => array('93.92.202.81'),
-                ),
-            ),
         ),
         'clientScript' => array(
             'scriptMap' => array(),

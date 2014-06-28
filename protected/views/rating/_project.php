@@ -10,7 +10,7 @@
 
     <div class="banner">
         <?php if($project->banner_clickable):?>
-        <a href="/rating/out/<?php echo $project->id?>">
+        <a href="/rating/project/<?php echo $project->id?>">
         <?php endif;?>
             <img src="<?php echo CHtml::encode($project['banner']); ?>"/>
         <?php if($project->banner_clickable):?>

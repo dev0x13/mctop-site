@@ -138,4 +138,16 @@ class Comments extends CActiveRecord
         ];
         return Comments::model()->findAll($criteria);
     }
+
+    public function beforeSave()
+    {
+        if(parent::beforeSave())
+        {
+            $this->comment = CHtml::encode($this->comment);
+
+            return true;
+        }
+        else
+            return false;
+    }
 }

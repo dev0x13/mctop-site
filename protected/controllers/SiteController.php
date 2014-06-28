@@ -240,9 +240,6 @@ class SiteController extends Controller
 
         if (Yii::app()->user->isGuest) {
 
-            if (Yii::app()->request->urlReferrer != Yii::app()->params['site_url'] . 's/login')
-                Yii::app()->request->cookies['previous_url'] = new CHttpCookie('previous_url', Yii::app()->request->urlReferrer);
-
             $model = new LoginForm;
 
             if (isset($_POST['LoginForm'])) {
@@ -251,6 +248,7 @@ class SiteController extends Controller
                 if ($model->validate() && $model->login()) {
 
                     if ((empty(Yii::app()->session['last_update'])) or (time() - strtotime(Yii::app()->session['last_update']) > 120)) {
+					
                         Yii::app()->session['last_update'] = date('Y-m-d H:i:s', time());
                         if (!empty(Yii::app()->session['last_update'])) {
                             $user = Users::model()->findByPk(Yii::app()->user->id);
@@ -258,10 +256,9 @@ class SiteController extends Controller
                             $user->save();
                         }
 
-                        if (!isset(Yii::app()->request->cookies['previous_url']))
-                            $this->redirect(Yii::app()->request->urlReferrer);
-                        else
-                            $this->redirect(Yii::app()->request->cookies['previous_url']);
+							/*if (Yii::app()->request->urlReferrer != Yii::app()->params['site_url'] . 's/login')
+							Yii::app()->request->cookies['previous_url'] = new CHttpCookie('previous_url', Yii::app()->request->urlReferrer);*/
+						
                     }
 
                 }
@@ -270,13 +267,7 @@ class SiteController extends Controller
 
             $this->render('login', array('model' => $model));
         } else {
-            if (isset(Yii::app()->request->cookies['previous_url']))
-                if (Yii::app()->request->cookies['previous_url'] == Yii::app()->params['site_url'] . 's/login')
-                    $this->redirect('/');
-            if (!isset(Yii::app()->request->cookies['previous_url']))
-                $this->redirect(Yii::app()->request->urlReferrer);
-            else
-                $this->redirect(Yii::app()->request->cookies['previous_url']);
+                $this->redirect('/rating');
         }
 
 
@@ -434,8 +425,4 @@ class SiteController extends Controller
         $this->render('sponsors');
     }
 
-    public function actionfest_in_jule()
-    {
-        $this->render('fest_in_jule');
-    }
 }

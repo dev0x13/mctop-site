@@ -38,6 +38,7 @@ class RatingController extends Controller
 
     public function actionIndex()
     {
+
         $criteria = Projects::getCriteriaForMainRating();
         $pages = new CPagination(Projects::model()->count($criteria));
         $pages->pageSize = 10;
@@ -48,12 +49,14 @@ class RatingController extends Controller
 
         foreach ($countries as $key => $country)
             $countries[$key] = $country->code;
-
+			
         $this->render('content', array(
             'projects' => $projects,
             'pages' => $pages,
             'countries' => $countries,
         ));
+		
+		
     }
 
     public function actionRecommended()
