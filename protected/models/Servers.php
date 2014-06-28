@@ -535,7 +535,10 @@ class Servers extends CActiveRecord
 
     public function isRecommendationIsEnded()
     {
-        return HUtils::getCurrentTimestamp() < $this->recommended->till ? false : true;
+        if(isset($this->recommended))
+            return HUtils::getCurrentTimestamp() < $this->recommended->till ? false : true;
+        else
+            return 1;
     }
 
     public function getCabinetRecommendedStatusMessage()

@@ -15,7 +15,7 @@ $this->breadcrumbs = array(
 
 <div class="pageTitle"><?php echo Yii::t('translations', 'Подтверждение сайта проекта') ?></div>
 
-<?php echo Yii::t('translations', 'Для подтверждения владения сайтом Вам необходимо поместить :link текст в корень своего сайта, в файл с названием leo.html,  и нажать кнопку <b>проверить</b>, находящуюся на данной странице', array(':link' => '<a target="_blank" href="' . Yii::app()->params['site_url'] . 'cabinet/projects/approve_site_file/' . $project->id . '">' . Yii::t('translations', 'данный') . '</a>')) ?>
+<?php echo Yii::t('translations', 'Для подтверждения владения сайтом Вам необходимо поместить :link текст в корень своего сайта, в файл с названием leo.html,  и нажать кнопку <b>проверить</b>, находящуюся на данной странице', array(':link' => '<a target="_blank" href="' . Yii::app()->params['site_url'] . 'cabinet/projects/approve_site_file/' . $project->id . '"><u>' . Yii::t('translations', 'данный') . '</u></a>')) ?>
 <br>
 <br>
 <?php echo Yii::t('translations', 'Другими словами, файл должен находиться по адресу: :link', array(':link' => $project->site)) ?>/leo.html
