@@ -26,6 +26,11 @@ class SiteController extends Controller
         );
     }
 
+    public function actionAuth_Admin()
+    {
+	$this->render('auth_admin');	
+    }	
+
     public function actionGg()
     {
 
