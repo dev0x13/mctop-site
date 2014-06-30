@@ -60,7 +60,10 @@
     )); ?><!-- breadcrumbs -->
 <?php endif; ?>
 
-    Илюша: регистрацию починил, скоро еще буду править, только проснулся просто<br><br>
+    <div style="background-color:#fff;padding:3px; text-align:center">
+        Следи за новостями MCTop во <a href="http://vk.com/mctop_company.public"><u>ВКонтакте</u></a><br>
+        MCTop Team: Сегодня поправим рекламу, сделаем мануал по сайту и еще несколько плюшек
+    </div><br><br>
     <?php echo $content; ?>
 
 
@@ -179,6 +182,7 @@
         </div>
 
         <div class="wip">
+            <br>
             MCTop &copy 2011-2014<br>
         </div>
     </div>

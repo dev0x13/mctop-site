@@ -49,7 +49,7 @@ class ImagesController extends Controller
             $image->attributes = $_POST['Images'];
             $image->image = CUploadedFile::getInstance($image, 'image');
             if ($image->save()) {
-                $image->image->saveAs(YII_ROOT . '/static/uploaded/u' . Yii::app()->user->id . '/' . $image->filename);
+                $image->image->saveAs(root . '/static/uploaded/u' . Yii::app()->user->id . '/' . $image->filename);
                 $this->redirect('/images');
             }
         }
