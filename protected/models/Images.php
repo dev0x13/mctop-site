@@ -291,7 +291,7 @@ class Images extends CActiveRecord
             unset($server_images[array_search($image->id, $server_images)]);
             $server->images = HUtils::TransformToString($server_images);
             $server->save();
-            unlink(YII_ROOT . '/static/uploaded/u' . $image->user . '/' . $image->filename);
+            unlink(root . '/static/uploaded/u' . $image->user . '/' . $image->filename);
             $image->delete();
             $deletions++;
         }
@@ -354,7 +354,10 @@ class Images extends CActiveRecord
 
     public function deleteImage()
     {
-        unlink(YII_ROOT . '/static/uploaded/u' . Yii::app()->user->id . '/' . $this->filename);
+        if(file_exists((root . '/static/uploaded/u' . Yii::app()->user->id . '/' . $this->filename)))
+        {
+            unlink(root . '/static/uploaded/u' . Yii::app()->user->id . '/' . $this->filename);
+        }
         $this->delete();
         return 1;
     }

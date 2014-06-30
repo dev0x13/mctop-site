@@ -1,7 +1,11 @@
 <div class="image" id="image_<?php echo $image->id; ?>">
-
+    
     <?php echo CHtml::form();
     //echo CHtml::textArea('output', $output, array('class'=>'form-control'));
+
+    echo CHtml::textField('input', $image->name, array('class' => 'name', 'maxlength' => 30, 'id' => 'input_' . $image->id));
+
+    echo '<br><br>';
 
     echo CHtml::ajaxSubmitButton(Yii::t('translations', 'Обновить'), '', array(
             'type' => 'POST',
@@ -15,14 +19,14 @@
         array(
             'type' => 'submit',
             'style' => '-webkit-margin-before: -28px;margin-right:5px;',
-            'class' => 'btn btn-success mctbtn_small'
+            'class' => 'btn btn-success'
         ));
 
 
-    echo CHtml::textField('input', $image->name, array('class' => 'name', 'maxlength' => 30, 'id' => 'input_' . $image->id));
 
     echo '<input type="hidden" name="id" value=' . $image->id . '>';
     ?>
+    <br>
     <div class="status" id="status_<?php echo $image->id; ?>">
         <?php echo Yii::t('translations', 'Изменения сохранены'); ?>
     </div>

@@ -21,7 +21,7 @@ $this->breadcrumbs = array(
 
     <br>
 
-    <?php if ($image->using != Images::USING_AS_ADVERT_BANNER): ?>
+    <?php if ($image->using != Images::USING_AS_ADVERT_BANNER and $image->using != Images::USING_AS_PROJECT_BANNER): ?>
         <div class="row">
             <input type="hidden" value="yes" name="answer"/>
             <?php echo CHtml::submitButton(Yii::t('translations', 'Удалить из галереи и с сервера. Безвозвратно'), array('class' => 'btn btn-danger')); ?>

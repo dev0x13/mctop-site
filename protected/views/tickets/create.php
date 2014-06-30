@@ -17,12 +17,12 @@ $this->breadcrumbs = array(
     )); ?>
 
     <div class="row">
-        <?php echo $form->textField($model, 'name', array('id' => 'title', 'size' => 60, 'maxlength' => 64, 'placeholder' => '* ' . Yii::t('translations', 'Тема тикета'))); ?>
+        <?php echo $form->textField($model, 'name', array('id' => 'title', 'size' => 60, 'maxlength' => 64, 'placeholder' => '* ' . Yii::t('translations', 'Тема тикета'), 'class'=>'form-control')); ?>
         <?php echo $form->error($model, 'name'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->textField($message, 'message', array('id' => 'title', 'size' => 60, 'maxlength' => 255, 'placeholder' => '* ' . Yii::t('translations', 'Сообщение'))); ?>
+        <?php echo $form->textArea($message, 'message', array('id' => 'title', 'size' => 60, 'maxlength' => 255, 'placeholder' => '* ' . Yii::t('translations', 'Сообщение'), 'class'=>'form-control')); ?>
         <?php echo $form->error($message, 'message'); ?>
     </div>
 

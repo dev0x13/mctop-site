@@ -77,7 +77,8 @@ class ImagesController extends Controller
             $err++;
             $this->render('_delete_error', array(
                 'message' => Yii::t('translations', 'Ошибка при удалении: изображение используется в качестве баннера.'),
-                'type' => 1
+                'type' => 1,
+                'image' => $image
             ));
         } else
             if ($image->using == Images::USING_IN_GALLERY) {
@@ -88,7 +89,8 @@ class ImagesController extends Controller
                 $err++;
                 $this->render('_delete_error', array(
                     'message' => Yii::t('translations', 'Ошибка при удалении: изображение используется в галерее.'),
-                    'type' => 2
+                    'type' => 2,
+                    'image' => $image
                 ));
             } else
                 if ($image->using == Images::USING_AS_ADVERT_BANNER) {

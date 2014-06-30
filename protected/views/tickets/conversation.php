@@ -32,7 +32,7 @@ $this->breadcrumbs = array(
         )); ?>
 
         <div class="row">
-            <?php echo $form->textField($model, 'message', array('id' => 'title', 'size' => 60, 'maxlength' => 64, 'placeholder' => '* ' . Yii::t('translations', 'Сообщение'))); ?>
+            <?php echo $form->textArea($model, 'message', array('id' => 'title', 'size' => 60, 'maxlength' => 64, 'placeholder' => '* ' . Yii::t('translations', 'Сообщение'), 'class' => 'form-control', 'rows' => '3')); ?>
             <?php echo $form->error($model, 'message'); ?>
         </div>
 

@@ -10,7 +10,7 @@ $this->breadcrumbs = array(
 ?>
 
 <a class="btn btn-default" href="/images/add"><?php echo Yii::t('translations', 'Добавить изображение'); ?></a>
-<hr>
+
 <?php
 $this->widget('CLinkPager', array(
     'pages' => $pages,
