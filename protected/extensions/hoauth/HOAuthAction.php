@@ -336,6 +336,7 @@ class HOAuthAction extends CAction
 
         // the model won't be new, if user provided email and password of existing account
         if ($user->isNewRecord) {
+            $user->login = md5($user->login+time());
             if (!$user->save())
                 throw new Exception("Error, while saving {$this->model} model:\n\n" . var_export($user->errors, true));
             /*$social_login = new UsersSocialLogins();

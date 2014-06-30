@@ -11,6 +11,12 @@ class RatingController extends Controller
         );
     }
 
+    public function actionTet()
+    {
+        $mq = new MQClient();
+        $mq->sendMessage('test');
+    }
+
     public function accessRules()
     {
         return array(

@@ -33,6 +33,7 @@
                     array('label' => Yii::t('translations', 'Новости'), 'url' => array('/news')),
                     array('label' => Yii::t('translations', 'Серверы'), 'url' => array('/search')),
                     array('label' => Yii::t('translations', 'Рейтинг'), 'url' => array('/rating')),
+                    array('label' => Yii::t('translations', 'Online'), 'url' => array('/users/usersOnline')),                    
                     array('label' => Yii::t('translations', 'Мой профиль'), 'url' => array('/u'.Yii::app()->user->id), 'visible' => !Yii::app()->user->isGuest),
                     array('label' => Yii::t('translations', 'Личный кабинет'), 'url' => array('/cabinet'), 'visible' => !Yii::app()->user->isGuest),
                     array('label' => Yii::t('translations', 'Вход'), 'url' => array('/s/login'), 'visible' => Yii::app()->user->isGuest, 'itemOptions' => array('class' => 'login')),

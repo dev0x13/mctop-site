@@ -584,5 +584,6 @@ return array(
 
                         Yours sincerely, MCTop Team
         ',
+        'Пользователи Online'=>'Users Online',
 
 );

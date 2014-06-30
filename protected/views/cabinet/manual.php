@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 ?>
 
 <h1>MCTop.Manual</h1>
-<hr>
 
 <?php echo Yii::t('translations', 'MCTop.Manual - руководство по использованию сайта, в нем вы сможете найти ответы на многие вопросы'); ?>.
 <hr>

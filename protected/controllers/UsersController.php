@@ -15,7 +15,7 @@ class UsersController extends Controller
     {
         return array(
             array('allow',
-                'actions' => array('profile', 'settings'),
+                'actions' => array('profile', 'settings', 'usersOnline'),
                 'users' => array('@'),
             ),
 
@@ -50,5 +50,15 @@ class UsersController extends Controller
         }
 
         $this->render('settings', array('model' => $model));
+    }
+
+    public function actionUsersOnline()
+    {
+        $time = strtotime(Time::now())-10*60;
+        $time = date('Y-m-d H:i:s', $time);
+        $users = Users::model()->findAll("last_update > '$time'");
+        $this->render('users_online',array(
+            'users' => $users
+        ));
     }
 }

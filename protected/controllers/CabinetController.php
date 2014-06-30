@@ -22,7 +22,7 @@ class CabinetController extends Controller
     {
         return array(
             array('allow',
-                'actions' => array('index', 'add', 'edit', 'roles', 'features', 'MakeRecommended', 'bank', 'bank_replenish', 'recommendedserverspay', 'recommendedserverreject', 'recommendedservers', 'favoriteserverslist', 'manual'),
+                'actions' => array('index', 'manual_page', 'add', 'edit', 'roles', 'features', 'MakeRecommended', 'bank', 'bank_replenish', 'recommendedserverspay', 'recommendedserverreject', 'recommendedservers', 'favoriteserverslist', 'manual'),
                 'users' => array('@'),
             ),
 
@@ -123,16 +123,25 @@ class CabinetController extends Controller
         $pages = new CPagination(FaqCategories::model()->count($criteria));
         $pages->pageSize = 10;
         $pages->applyLimit($criteria);
-        $articles = FaqCategories::model()->findAll($criteria);
+        $articles = Faq::model()->findAll($criteria);
 
-        $this->render('manual_category', array(
-            'articles' => $articles
+        $this->render('manual_group', array(
+            'articles' => $articles,
+            'category' => $group
         ));
     }
 
-    public function actionManualPage($id)
+    public function actionManual_Page($id)
     {
+        if(is_null($article = Faq::model()->findByPk($id)))
+            throw new CHttpException(404, Yii::t('translations', 'entity не найдена', array('entity' => Yii::t('translations', 'Категория'))));
 
+        $category = FaqCategories::model()->findByPk($article->id);
+
+        $this->render('manual_page',array(
+            'article' => $article,
+            'category' => $category
+        ));
     }
 
     public function actionMakeRecommended($id)

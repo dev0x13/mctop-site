@@ -10,4 +10,4 @@ $this->pageTitle .= ' - Login';
 <div class="pageTitle">Login</div>
 
 <?php echo Yii::t('translations', 'Пароль был обновлен'); ?><br><br>
-<a href="/s/login" class="btn btn-primary"><?php echo Yii::t('translations', 'Войти на сайт'); ?></a>
+<a href="/rating" class="btn btn-primary"><?php echo Yii::t('translations', 'Рейтинг'); ?></a>

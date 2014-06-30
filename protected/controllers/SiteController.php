@@ -31,42 +31,6 @@ class SiteController extends Controller
 	$this->render('auth_admin');	
     }	
 
-    public function actionGg()
-    {
-
-        if ($_SERVER['REMOTE_ADDR'] != '93.92.202.81')
-            die();
-        $servers = Servers::model()->findAll();
-        foreach ($servers as $key => $server) {
-            $server_address = explode(':', $server->address);
-
-            $server_ip = $server_address[0];
-
-            if (isset($server_address[1]))
-                $server_port = $server_address[1];
-            else
-                $server_port = 25565;
-
-            $version = ServersVersions::model()->findByPk($server->version)->version;
-            $version = str_replace('.', '', $version);
-
-            if ($version >= 170)
-                $version = 'new';
-            else
-                $version = 'old';
-
-            $_to_json = array(
-                'id' => $server->id,
-                'ip' => $server_ip,
-                'port' => $server_port,
-                'protocol_version' => $version
-            );
-
-            Yii::app()->servers_bd->getClient()->set('server:' . $server->id, json_encode($_to_json));
-        }
-    }
-
-
     public function actionError()
     {
         if ($error = Yii::app()->errorHandler->error) {
@@ -129,6 +93,7 @@ class SiteController extends Controller
 
     public function actionForgotPwd()
     {
+
         if (Yii::app()->request->isPostRequest) {
             $model = new PreVote();
 
@@ -153,9 +118,9 @@ class SiteController extends Controller
                         Для того, чтобы восстановить пароль Вам необходимо пройти по ссылке.
 
                         link', array('link' => Yii::app()->params['site_url'] . 's/restorepassword/' . $hash));
-                        $mail = mail($user->email, 'MCTop: ' . Yii::t('translations', 'Восстановление пароля'), $message, 'From: MCTop.Dev <dev@mctop.im>' . "\r\n" .
+                        $mail = mail($user->email, 'MCTop: ' . Yii::t('translations', 'Восстановление пароля'), $message, 'From: MCTop.Support <support@mctop.im>' . "\r\n" .
                             'Reply-To: webmaster@mctop.im');
-                        var_dump($mail);
+
                         if ($mail)
                             $this->render('message_sent');
                     }
