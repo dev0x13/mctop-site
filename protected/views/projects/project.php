@@ -131,7 +131,7 @@ $this->breadcrumbs = array(
 
                                 <?php if (!$project->isProjectHaveGuild()): ?>
                                     <li>
-                                        <a href="/cabinet/projects/guild/create/<?php echo $project->id; ?>">
+                                        <a href="/projects/guild/create/<?php echo $project->id; ?>">
                                             <?php echo Yii::t('translations', 'Создать гильдию'); ?>
                                         </a>
                                     </li>
